@@ -1,3 +1,3 @@
-module channels
+module example.com
 
 go 1.21.5
