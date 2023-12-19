@@ -36,6 +36,8 @@ func RenderTemplate(w http.ResponseWriter, t string) {
 	// 6) добавляем инструкцию if, что бы определить поток выполнения кода на основании того, есть ключ в мапе или нет
 	if !inMap {
 		// need to create template
+		// 22) добавляем log
+		log.Println("creating template and adding to cache")
 		// 18) не понимаю зачем тут переменная err и почему нельзя просто вызывать функцию;
 		// почти сразу же понял, это нужно для того, что бы получить ошибку, если она будет;
 		err = createTemplateCache(t)
@@ -67,7 +69,7 @@ func createTemplateCache(t string) error {
 		fmt.Sprintf("./templates/%s", t),
 		// 12) я понимаю, что инфо из предыдущего пункта и этот функт должны передаваться вместе в будущем для рендеринга страницы,
 		// но не понимаю, почему они содержатся в слайсе как разные элементы, что будет дальше?
-		"./templates/base.layout.tmpl",
+		"./templates/base.layout.html",
 	}
 
 	// parse the template
